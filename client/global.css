@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Web-specific fixes for React Native Web + NativeWind */
+@media screen {
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+
+  #root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Ensure box-sizing is consistent */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* Fix for flexbox issues on web */
+  .flex {
+    display: flex !important;
+  }
+
+  .flex-1 {
+    flex: 1 !important;
+  }
+
+  .flex-col {
+    flex-direction: column !important;
+  }
+
+  .flex-row {
+    flex-direction: row !important;
+  }
+
+  /* Ensure React Native Web styles work properly */
+  [data-reactroot] {
+    height: 100%;
+  }
+
+  /* Fix horizontal scroll on web */
+  .horizontal-scroll {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
+  }
+
+  .horizontal-scroll::-webkit-scrollbar {
+    display: none !important; /* Chrome, Safari, Opera */
+  }
+
+  .horizontal-scroll-item {
+    display: inline-block !important;
+    white-space: normal !important;
+    vertical-align: top !important;
+  }
+
+  /* Remove all input field outlines and borders on focus */
+  input,
+  textarea {
+    outline: none !important;
+    outline-width: 0 !important;
+    outline-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  input:focus,
+  textarea:focus,
+  input:active,
+  textarea:active {
+    outline: none !important;
+    outline-width: 0 !important;
+    outline-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}

@@ -1,0 +1,67 @@
+/* Web-specific styles to ensure NativeWind works */
+@import "./global.css";
+
+/* Ensure body and html have proper setup */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fix for some React Native Web styling issues */
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure flexbox works properly on web */
+.flex {
+  display: flex !important;
+}
+
+.flex-1 {
+  flex: 1 !important;
+}
+
+.flex-col {
+  flex-direction: column !important;
+}
+
+.flex-row {
+  flex-direction: row !important;
+}
+
+.items-center {
+  align-items: center !important;
+}
+
+.justify-center {
+  justify-content: center !important;
+}
+
+.justify-between {
+  justify-content: space-between !important;
+}
+
+/* Ensure background colors work */
+.bg-background {
+  background-color: #f3f3f3 !important;
+}
+
+.bg-foreground {
+  background-color: #f8f8f8 !important;
+}
+
+.bg-primary {
+  background-color: #6932e2 !important;
+}
+
+.bg-secondary {
+  background-color: #9e76f8 !important;
+}
