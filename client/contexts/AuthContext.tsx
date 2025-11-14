@@ -3,6 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { SERVER_URL } from "../constants";
 import { load, save } from "../lib/storage";
+import { router } from "expo-router";
 export type UserRole = "student" | "lecturer";
 
 export interface User {
@@ -38,6 +39,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       const userJson = await load("user", null);
       setUser(userJson);
     } catch (error) {
+      router.push("/sign-in");
       console.error("Error loading user:", error);
     } finally {
       setIsLoading(false);

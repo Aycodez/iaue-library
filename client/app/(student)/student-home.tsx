@@ -117,7 +117,7 @@ const StudentHome = () => {
                   className="w-40 bg-white rounded-xl overflow-hidden border border-gray-200"
                 >
                   <Image
-                    source={{ uri: textbook.coverImage }}
+                    source={{ uri: textbook?.coverImage || "" }}
                     className="w-full h-48"
                     resizeMode="cover"
                   />
@@ -181,19 +181,19 @@ const StudentHome = () => {
                 className="bg-white p-4 rounded-xl border border-gray-200 flex-row gap-4"
               >
                 <Image
-                  source={{ uri: purchase.textbook.coverImage }}
+                  source={{ uri: purchase.textbook?.coverImage || "" }}
                   className="w-20 h-28 rounded-lg"
                   resizeMode="cover"
                 />
                 <View className="flex-1">
                   <CustomText variant="bold" className="text-lg mb-1">
-                    {purchase.textbook.title}
+                    {purchase.textbook?.title}
                   </CustomText>
                   <CustomText
                     variant="medium"
                     className="text-sm text-gray-600 mb-2"
                   >
-                    {purchase.textbook.author}
+                    {purchase.textbook?.author}
                   </CustomText>
                   <View className="bg-green-100 px-3 py-1 rounded-lg self-start">
                     <CustomText

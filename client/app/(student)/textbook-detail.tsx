@@ -1,4 +1,12 @@
-import { View, ScrollView, TouchableOpacity, Image, Alert } from "react-native";
+import {
+  View,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  Alert,
+  Platform,
+  Linking,
+} from "react-native";
 import { CustomText } from "../../components/custom-text";
 import { useAuth } from "../../contexts/AuthContext";
 import { useTextbooks } from "../../contexts/TextbookContext";
@@ -52,6 +60,39 @@ const TextbookDetail = () => {
       setIsLoading(false);
     }
   };
+
+  const handleDownload = async () => {
+    if (!textbook?.pdfUrl) {
+      Alert.alert("Error", "PDF file not available");
+      return;
+    }
+
+    try {
+      if (Platform.OS === "web") {
+        // For web, create a download link
+        const link = document.createElement("a");
+        link.href = textbook.pdfUrl;
+        link.download = `${textbook.title}.pdf`;
+        link.target = "_blank";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        Alert.alert("Success", "Download started!");
+      } else {
+        // For mobile, open the PDF URL
+        const canOpen = await Linking.canOpenURL(textbook.pdfUrl);
+        if (canOpen) {
+          await Linking.openURL(textbook.pdfUrl);
+        } else {
+          Alert.alert("Error", "Cannot open PDF file");
+        }
+      }
+    } catch (error) {
+      console.error("Download error:", error);
+      Alert.alert("Error", "Failed to download textbook. Please try again.");
+    }
+  };
+
   console.log(textbook);
 
   if (!textbook) {
@@ -180,6 +221,14 @@ const TextbookDetail = () => {
               >
                 Check your library to read this textbook
               </CustomText>
+              <TouchableOpacity onPress={handleDownload}>
+                <CustomText
+                  variant="medium"
+                  className="text-green-600 underline text-sm mt-1"
+                >
+                  Download
+                </CustomText>
+              </TouchableOpacity>
             </View>
           ) : (
             <Button
