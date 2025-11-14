@@ -161,7 +161,7 @@ const LecturerHome = () => {
                     {textbook.category}
                   </CustomText>
                   <CustomText variant="bold" className="text-primary text-lg">
-                    ${textbook.price.toFixed(2)}
+                    N{textbook.price.toFixed(2)}
                   </CustomText>
                 </View>
               ))}

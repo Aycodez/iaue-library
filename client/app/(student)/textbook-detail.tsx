@@ -118,7 +118,7 @@ const TextbookDetail = () => {
 
         {/* Price */}
         <CustomText variant="bold" className="text-4xl text-primary mb-6">
-          ${textbook.price.toFixed(2)}
+          N{textbook.price.toFixed(2)}
         </CustomText>
 
         {/* Description */}

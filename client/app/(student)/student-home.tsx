@@ -130,7 +130,7 @@ const StudentHome = () => {
                       {textbook.title}
                     </CustomText>
                     <CustomText variant="bold" className="text-primary">
-                      ${textbook.price.toFixed(2)}
+                      N{textbook.price.toFixed(2)}
                     </CustomText>
                   </View>
                 </TouchableOpacity>
