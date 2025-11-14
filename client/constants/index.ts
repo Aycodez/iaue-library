@@ -1,1 +1,1 @@
-export const SERVER_URL = "http://localhost:5000/api/v1";
+export const SERVER_URL = "https://iaue-library-7bmk.vercel.app/api/v1";

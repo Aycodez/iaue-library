@@ -15,7 +15,11 @@ dotenv.config();
 const app = express();
 const httpServer = http.Server(app);
 
-const allowedOrigins = ["http://localhost:3000", "http://localhost:8081"];
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:8081",
+  "https://iaue-library.vercel.app",
+];
 
 const corsOptions = {
   origin: function (origin, callback) {
