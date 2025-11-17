@@ -75,4 +75,13 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-export { loginUser, createUser };
+const getAllUsers = asyncHandler(async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.status(200).json({ users });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+});
+export { loginUser, getAllUsers, createUser };

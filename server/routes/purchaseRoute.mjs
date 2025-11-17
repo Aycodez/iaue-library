@@ -29,7 +29,7 @@ router.get("/textbook/:textbookId", getPurchasesByTextbook);
 router.get("/lecturer/:lecturerId", getPurchasesByLecturer);
 
 // Admin only routes
-router.get("/", authorizeAdmin, getAllPurchases);
+router.get("/", getAllPurchases);
 
 // General routes (with authorization checks in controller)
 router.get("/:id", getPurchaseById);

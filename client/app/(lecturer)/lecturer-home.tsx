@@ -115,10 +115,20 @@ const LecturerHome = () => {
         {/* Upload Button */}
         <TouchableOpacity
           onPress={() => router.push("/(lecturer)/upload")}
-          className="bg-primary p-4 rounded-xl mb-6"
+          className="bg-primary p-4 rounded-xl mb-4"
         >
           <CustomText variant="bold" className="text-white text-center text-lg">
             Upload New Textbook
+          </CustomText>
+        </TouchableOpacity>
+
+        {/* Database Viewer Button */}
+        <TouchableOpacity
+          onPress={() => router.push("/database-viewer" as any)}
+          className="bg-blue-600 p-4 rounded-xl mb-6"
+        >
+          <CustomText variant="bold" className="text-white text-center text-lg">
+            📊 View Database Tables
           </CustomText>
         </TouchableOpacity>
 
