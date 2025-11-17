@@ -15,7 +15,7 @@
         font-family:
           -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
           Cantarell, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: white;
         padding: 20px;
         min-height: 100vh;
       }
@@ -206,44 +206,19 @@
   <body>
     <div class="container">
       <div class="header">
-        <h1>🎓 FIRI Textbook Platform</h1>
-        <p>MongoDB Database Viewer</p>
+        <h1>IAUE LIBRARY</h1>
+        <p>Database</p>
       </div>
 
       <div class="content">
         <button class="refresh-btn" onclick="loadAllData()">
-          🔄 Refresh Data
+          Refresh Data
         </button>
 
-        <div class="stats">
-          <div class="stat-card">
-            <h3 id="userCount">0</h3>
-            <p>Total Users</p>
-          </div>
-          <div class="stat-card">
-            <h3 id="textbookCount">0</h3>
-            <p>Total Textbooks</p>
-          </div>
-          <div class="stat-card">
-            <h3 id="purchaseCount">0</h3>
-            <p>Total Purchases</p>
-          </div>
-          <div class="stat-card">
-            <h3 id="revenue">₦0</h3>
-            <p>Total Revenue</p>
-          </div>
-        </div>
-
         <div class="tabs">
-          <button class="tab active" onclick="showTab('users')">
-            👥 Users
-          </button>
-          <button class="tab" onclick="showTab('textbooks')">
-            📚 Textbooks
-          </button>
-          <button class="tab" onclick="showTab('purchases')">
-            💰 Purchases
-          </button>
+          <button class="tab active" onclick="showTab('users')">Users</button>
+          <button class="tab" onclick="showTab('textbooks')">Textbooks</button>
+          <button class="tab" onclick="showTab('purchases')">Purchases</button>
         </div>
 
         <div id="users" class="table-container active">
@@ -264,7 +239,7 @@
 
     <script>
       // Replace this with your actual API URL
-      const API_URL = "http://localhost:5000/api"; // Change this to your server URL
+      const API_URL = "http://localhost:5000/api/v1"; // Change this to your server URL
 
       function showTab(tabName) {
         // Hide all tables
@@ -286,9 +261,7 @@
         try {
           const response = await fetch(`${API_URL}/users`);
           const data = await response.json();
-          const users = data.data || data;
-
-          document.getElementById("userCount").textContent = users.length;
+          const users = data.users || data;
 
           const html = `
                     <table>
@@ -329,9 +302,6 @@
           const response = await fetch(`${API_URL}/textbooks`);
           const data = await response.json();
           const textbooks = data.data || data;
-
-          document.getElementById("textbookCount").textContent =
-            textbooks.length;
 
           const html = `
                     <table>
@@ -381,15 +351,10 @@
           const data = await response.json();
           const purchases = data.data || data;
 
-          document.getElementById("purchaseCount").textContent =
-            purchases.length;
-
           const totalRevenue = purchases.reduce(
             (sum, p) => sum + (p.amount || 0),
             0
           );
-          document.getElementById("revenue").textContent =
-            `₦${totalRevenue.toFixed(2)}`;
 
           const html = `
                     <table>

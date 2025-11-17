@@ -15,7 +15,7 @@ import { authenticate, authorizeAdmin } from "../middleware/index.mjs";
 const router = express.Router();
 
 // All routes require authentication
-router.use(authenticate);
+// router.use(authenticate);
 
 // Student routes
 router.post("/", createPurchase);
